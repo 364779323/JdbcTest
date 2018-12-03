@@ -19,7 +19,7 @@ class Main{
             );
             Statement s=c.createStatement();)
         {
-            String sql="insert into hero values(null,\" + \"'提莫'\" + \",\" + 313.0f + \",\" + 50 + \")";
+            String sql="insert into hero values(null," + "'ssr'" + "," + 313.0f + "," + 50 + ")";
             s.execute(sql);
         }
          catch (SQLException e){
