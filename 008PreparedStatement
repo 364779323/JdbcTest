@@ -1,0 +1,32 @@
+//preparedStatement的优点
+//使用参数设置，可读性好，不易犯错
+//preparedStatement有预编译机制，比Statement快
+//可以防止SQL注入式攻击
+import java.sql.*;
+
+class Main{
+    public static void main(String[] args) {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        String sql="insert into hero values(null,?,?,?)";
+        try(Connection c=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/testmysql?characterEncoding=UTF-8&useSSL=false",
+                "root","lh367960");
+            //根据sql语句创建PreparedStatement
+            PreparedStatement ps=c.prepareStatement(sql);
+            )
+        { 
+           //设置参数
+            ps.setString(1,"ssr");
+            ps.setFloat(2,313.0f);
+            ps.setInt(3,50);
+            ps.execute();//执行
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+}
